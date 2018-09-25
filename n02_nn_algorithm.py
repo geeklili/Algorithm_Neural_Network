@@ -1,5 +1,4 @@
 import random
-
 import numpy as np
 
 
@@ -36,7 +35,7 @@ class NeuralNetwork(object):
         self.w.append(np.random.random([layers[1] + 1, layers[2]]))
         # print(self.w)
 
-    def fit(self, X, Y, l=0.06, n=10000):
+    def fit(self, X, Y, l=0.1, n=10000):
         """
         训练函数
         :param X: 训练矩阵
@@ -85,9 +84,9 @@ class NeuralNetwork(object):
     def predict(self, x):
         """预测"""
         x = np.array(x)
-        print(x.shape)
+        # print(x.shape)
         temp = np.ones([x.shape[0], x.shape[1] + 1])
-        print(temp)
+        # print(temp)
         temp[:, :-1] = x
         a = temp
         for l in range(0, len(self.w)):
@@ -97,7 +96,6 @@ class NeuralNetwork(object):
 
 
 if __name__ == '__main__':
-    print(sigmoid_der(2))
     nn = NeuralNetwork([3, 2, 1])
     X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
     nn.fit(X, [1, 0, 0])
